@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}My Notes{% endblock %}
+{% block content %}
+  <h2>Your Letters 📜</h2>
+  {% for note in notes %}
+    <div class="card my-3 p-3">
+      <h4>To: {{ note.to_name }} ({{ note.mood|title }})</h4>
+      <p>{{ note.generated_text }}</p>
+      <small class="text-muted">{{ note.created_at }}</small>
+    </div>
+  {% empty %}
+    <p>You haven’t created any notes yet.</p>
+  {% endfor %}
+{% endblock %}
